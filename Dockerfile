@@ -38,5 +38,6 @@ RUN composer install --no-dev --prefer-dist --no-autoloader --no-scripts
 RUN chmod -R 777 storage
 RUN chmod -R 777 bootstrap/cache
 RUN composer dump-autoload
+RUN npm install && npm run build
 
 EXPOSE 80

@@ -5,11 +5,12 @@
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vite App</title>
-    @vite('resources/js/app.js')
+    @vite('resources/css/app.css')
   </head>
   <body>
     <div id="app">
-        <base />
+      <base />
     </div>
+    @vite('resources/js/app.js')
   </body>
 </html>

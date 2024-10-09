@@ -1,5 +1,5 @@
 <template>
-    <h1>Olá {{ name }}</h1>
+    <h1 class="flex w-full">Olá {{ name }} aaaaaaa</h1>
 </template>
 
 <script>
