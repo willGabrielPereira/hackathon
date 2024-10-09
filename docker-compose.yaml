@@ -1,18 +1,18 @@
 services:
-  # db: #container do mysql
-  #   image: mysql:5.7
-  #   volumes:
-  #     - db_data:/var/lib/mysql
-  #   restart: always
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: manager
-  #     MYSQL_DATABASE: product-manager
-  #     MYSQL_USER: manager
-  #     MYSQL_PASSWORD: manager
+  db: #container do mysql
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: aprerh
+      MYSQL_DATABASE: aprerh
+      MYSQL_USER: aprerh
+      MYSQL_PASSWORD: aprerh
 
   php: #container do php
-    # depends_on:
-    #   - db
+    depends_on:
+      - db
     build: ./
     restart: always
     ports:
@@ -21,11 +21,11 @@ services:
     domainname: apre.rh
     # volumes:
     #   - C:\Users\William\Desktop\product-manager:/var/www/html/
-    # environment:
-    #   DB_HOST: db:3306
-    #   DB_USER: manager
-    #   DB_PASSWORD: manager
-    #   DB_NAME: product-manager
+    environment:
+      DB_HOST: db:3306
+      DB_USERNAME: aprerh
+      DB_PASSWORD: aprerh
+      DB_DATABASE: aprerh
 
-# volumes:
-#   db_data: {}
+volumes:
+  db_data: {}
