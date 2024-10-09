@@ -21,8 +21,11 @@ RUN apt-get update && apt-get install -y --force-yes \
     zip
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
 
 RUN a2enmod rewrite
+
+RUN bash nodesource_setup.sh && apt-get install -y nodejs
 
 COPY virtualhost.conf /etc/apache2/sites-enabled/000-default.conf
 
@@ -30,10 +33,10 @@ COPY . .
 
 RUN chown -R www-data:www-data /var/www
 
-# RUN composer install --no-dev --prefer-dist --no-autoloader --no-scripts
+RUN composer install --no-dev --prefer-dist --no-autoloader --no-scripts
 
-# RUN chmod -R 777 storage
-# RUN chmod -R 777 bootstrap/cache
-# RUN composer dump-autoload
+RUN chmod -R 777 storage
+RUN chmod -R 777 bootstrap/cache
+RUN composer dump-autoload
 
 EXPOSE 80
