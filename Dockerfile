@@ -31,12 +31,12 @@ COPY virtualhost.conf /etc/apache2/sites-enabled/000-default.conf
 
 COPY . .
 
-RUN chown -R www-data:www-data /var/www
+RUN chown www-data:www-data /var/www -R ./storage
 
 RUN composer install --no-dev --prefer-dist --no-autoloader --no-scripts
 
-RUN chmod -R 777 storage
-RUN chmod -R 777 bootstrap/cache
+RUN chmod o+w storage -R
+RUN chmod o+w bootstrap/cache -R
 RUN composer dump-autoload
 RUN npm install && npm run build
 
