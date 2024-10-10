@@ -1,6 +1,17 @@
 import './bootstrap'
 
+import { createRouter, createWebHistory } from 'vue-router'
 import { createApp } from 'vue'
-import base from './views/base.vue'
+import App from './App.vue'
+import routes from './routes'
 
-createApp(base).mount('#app')
+const router = createRouter({
+    history: createWebHistory(),
+    routes,
+})
+
+
+
+createApp(App)
+    .use(router)
+    .mount('#app')
