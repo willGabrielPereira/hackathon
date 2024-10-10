@@ -10,8 +10,9 @@ if (!function_exists('validateOrFail')) {
 
         $validator = Validator::make($request, $validations);
 
-        if ($validator->fails())
-            return throw new ApiException($validator->errors(), $request);
+        if ($validator->fails()) {
+            throw new ApiException($validator->errors()->getMessages(), $request);
+        }
 
         return $validator;
     }

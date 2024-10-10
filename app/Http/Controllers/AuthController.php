@@ -35,7 +35,7 @@ class AuthController extends Controller
     {
         validateOrFail([
             'email' => 'required|email',
-            'password' => 'required|min:8',
+            'password' => 'required',
         ], $request->post());
 
         $user = User::where('email', $request->email)->first();

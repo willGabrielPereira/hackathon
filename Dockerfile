@@ -26,6 +26,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
 RUN a2enmod rewrite
 
 RUN bash nodesource_setup.sh && apt-get install -y nodejs
+# RUN rm nodesource_setup.sh
 
 COPY virtualhost.conf /etc/apache2/sites-enabled/000-default.conf
 
@@ -33,10 +34,10 @@ COPY . .
 
 RUN chown www-data:www-data /var/www -R ./storage
 
-RUN composer install --no-dev --prefer-dist --no-autoloader --no-scripts
+RUN composer install --prefer-dist --no-autoloader --no-scripts
 
-RUN chmod o+w storage -R
-RUN chmod o+w bootstrap/cache -R
+RUN chmod 777 storage -R
+RUN chmod 777 bootstrap/cache -R
 RUN composer dump-autoload
 RUN npm install && npm run build
 

@@ -25,7 +25,7 @@ class ApiException extends Exception
             unset($errors['message']);
         }
 
-        if (!$message && is_array($firstError) && (array_key_exists('message', $firstError) || property_exists($firstError, 'message')))
+        if (!$message && (is_array($firstError) && (array_key_exists('message', $firstError)) || (is_object($firstError) && property_exists($firstError, 'message'))))
             $message = $firstError['message'] ?? $firstError->message;
 
         if (!$message && is_string($firstError))
