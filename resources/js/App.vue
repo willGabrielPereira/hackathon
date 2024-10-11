@@ -5,6 +5,7 @@
     </p>
     <nav>
         <RouterLink to="/">Go to Home</RouterLink>
+        <br />
         <RouterLink to="/login">Go to About</RouterLink>
     </nav>
     <main>
