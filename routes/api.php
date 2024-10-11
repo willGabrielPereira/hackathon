@@ -1,10 +1,6 @@
 <?php
 
-use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\RouteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,9 +23,6 @@ Route::post('/signup', [AuthController::class, 'signup'])->name('signup');
 Route::post('/signin', [AuthController::class, 'signin'])->name('signin');
 
 Route::name('signed.')->middleware('auth:sanctum')->group(function () {
-    // User routes
-    Route::name('user.')->prefix('/user')->group(function () {
-        Route::get('/', [UserController::class, 'show'])->name('show');
-        Route::put('/update', [UserController::class, 'update'])->name('update');
-    });
+    Route::get('/user/me', [UserController::class, 'me'])->name('user.me');
+    Route::apiResource('/user', UserController::class);
 });

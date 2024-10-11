@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'superior_id',
     ];
 
     /**
@@ -43,7 +44,15 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'password' => 'hashed'
         ];
+    }
+
+    public function superior() {
+        return $this->belongsTo(User::class, 'superior_id');
+    }
+
+    public function subordinates() {
+        return $this->hasMany(User::class, 'superior_id');
     }
 }
