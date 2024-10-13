@@ -26,7 +26,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
 RUN a2enmod rewrite
 
 RUN bash nodesource_setup.sh && apt-get install -y nodejs
-# RUN rm nodesource_setup.sh
+RUN rm nodesource_setup.sh
 
 COPY virtualhost.conf /etc/apache2/sites-enabled/000-default.conf
 
