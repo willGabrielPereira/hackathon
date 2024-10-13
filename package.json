@@ -15,6 +15,7 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@vuepic/vue-datepicker": "^9.0.3",
         "vue-router": "^4.4.5",
         "vue-the-mask": "^0.11.1"
     }
