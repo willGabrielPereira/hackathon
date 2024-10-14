@@ -15,7 +15,10 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@phosphor-icons/vue": "^2.2.1",
         "@vuepic/vue-datepicker": "^9.0.3",
+        "qs": "^6.13.0",
+        "vue-currency-input": "^3.1.0",
         "vue-router": "^4.4.5",
         "vue-the-mask": "^0.11.1"
     }

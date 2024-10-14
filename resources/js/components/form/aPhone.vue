@@ -1,5 +1,5 @@
 <template>
-    <aInput v-bind="$props" v-mask="masks"></aInput>
+    <aInput v-bind="$props" v-model="showValue" v-mask="masks" ></aInput>
 </template>
 
 <script>
@@ -9,7 +9,6 @@ import {mask} from 'vue-the-mask'
 export default {
     name: 'aPhone',
     directives: { mask },
-
     components: { aInput },
     emits: ['update:model-value'],
 
@@ -23,6 +22,10 @@ export default {
     props: {
         modelValue: {
             type: [String, Number]
+        },
+        placeholder: {
+            type: String,
+            // default: '(  ) _____-____'
         },
         type: String,
         label: String,
